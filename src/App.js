@@ -6,6 +6,7 @@ import DisplayReservations from './components/DisplayReservations';
 
 function App() {
   const [passes, setPasses] = useState([])
+  const [currentPassAndRes, setCurrentPassAndRes] = useState({reservations:[]})
 
   useEffect(()=>{
     fetch('http://localhost:9292/passes')
@@ -16,14 +17,14 @@ function App() {
   function handlePassClick(id){
     fetch(`http://localhost:9292/passes/${id}`)
     .then(r => r.json())
-    .then(r => console.log(r))
+    .then(setCurrentPassAndRes)
   }
   
   return (
     <div className="App">
       <Passes passes={passes} onPassClick={handlePassClick}/>
       <ReservationForm />
-      <DisplayReservations />
+      <DisplayReservations currentPassAndRes={currentPassAndRes} />
     </div>
   );
 }
