@@ -1,8 +1,18 @@
 import React from "react";
 
-function Passes(){
+function Passes({passes, onPassClick}){
+    const listOfPasses = passes.map(pass => {
+        return(
+            <li onClick={() => onPassClick(pass.id)}  key={pass.id}>
+                {pass.name}
+            </li>
+        )
+    })
+
     return(
-        <p>I will contain a lst of the passes when I am done</p>
+        <ul>
+            {listOfPasses}
+        </ul>
     )
 }
 
