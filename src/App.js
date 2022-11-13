@@ -23,7 +23,7 @@ function App() {
   return (
     <div className="App">
       <Passes passes={passes} onPassClick={handlePassClick}/>
-      <ReservationForm />
+      <ReservationForm passId={currentPassAndRes.id}/>
       <DisplayReservations currentPassAndRes={currentPassAndRes} />
     </div>
   );
