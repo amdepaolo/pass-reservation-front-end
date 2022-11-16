@@ -1,21 +1,32 @@
 import React  from "react";
+import ReservationInfo from "./ReservationInfo";
 
 function DisplayReservations({currentPassAndRes}){
     const reservations = currentPassAndRes.reservations;
     const reservationList = reservations.map(reservation =>{
         return (
-            <li>Name: {reservation.name} Check-out date: {reservation.check_out} Check-in date: {reservation.check_in}</li>
+            <ReservationInfo key={reservation.id} reservation={reservation}/>
         )
     })
 
     return(
         <div>
-            <ul>
-                {reservationList}
-            </ul>
+            <h2>Reservations:</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Check-out Date</th>
+                        <th>Check-in Date</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {reservationList}
+                </tbody>
+            </table>
         </div>
     )
-
 }
 
 export default DisplayReservations
