@@ -1,6 +1,6 @@
 import React, {useState} from "react";
 
-function CreatePassForm(){
+function CreatePassForm({onResponse}){
     const [passForm, setPassForm] = useState({name: '', website:''})
 
     function updatePassForm(key,value){
@@ -16,7 +16,7 @@ function CreatePassForm(){
             body: JSON.stringify(passForm)
         })
         .then(r => r.json())
-        .then(r => console.log(r))     
+        .then(onResponse)     
     }
     return(
         <form>

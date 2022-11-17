@@ -20,12 +20,22 @@ function App() {
     .then(r => r.json())
     .then(setCurrentPassAndRes)
   }
+
+  function updatePasses(response){
+    const updatedPasses = [...passes, response]
+    setPasses(updatedPasses)
+  }
+
+  function updateReservations(response){
+    const updatedPassAndRes = {...currentPassAndRes, reservations: response}
+    setCurrentPassAndRes(updatedPassAndRes)
+  }
   
   return (
     <div className="App">
       <Passes passes={passes} onPassClick={handlePassClick}/>
-      <CreatePassForm />
-      <ReservationForm currentPassAndRes={currentPassAndRes}/>
+      <CreatePassForm onResponse={updatePasses}/>
+      <ReservationForm passId={currentPassAndRes.id} passName={currentPassAndRes.name} onResponse={updateReservations}/>
       <DisplayReservations currentPassAndRes={currentPassAndRes} />
     </div>
   );

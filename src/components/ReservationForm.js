@@ -1,6 +1,6 @@
 import React, {useState} from 'react'
 
-function ReservationForm({passId}){
+function ReservationForm({passId, passName, onResponse}){
     const [resFormObj, setResFormObj] = useState({name: '', email: '', check_out: ''})
 
     function updateResForm(key, value){
@@ -17,13 +17,12 @@ function ReservationForm({passId}){
             body: JSON.stringify(resFormObj)
         })
         .then(r => r.json())
-        .then(r => console.log(r))
-        
+        .then(onResponse)     
     }
 
     return(
         <form>
-            <h2>Create Reservation</h2>
+            <h2>Create Reservation for {passName}</h2>
             <label>Name: </label>
             <input
                 value={resFormObj.name} 
