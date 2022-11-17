@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react';
 import ReservationForm from './components/ReservationForm';
 import Passes from './components/Passes';
 import DisplayReservations from './components/DisplayReservations';
+import CreatePassForm from './components/CreatePassForm';
 
 function App() {
   const [passes, setPasses] = useState([])
@@ -23,7 +24,8 @@ function App() {
   return (
     <div className="App">
       <Passes passes={passes} onPassClick={handlePassClick}/>
-      <ReservationForm passId={currentPassAndRes.id}/>
+      <CreatePassForm />
+      <ReservationForm currentPassAndRes={currentPassAndRes}/>
       <DisplayReservations currentPassAndRes={currentPassAndRes} />
     </div>
   );

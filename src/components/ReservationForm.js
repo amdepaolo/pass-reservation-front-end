@@ -23,6 +23,7 @@ function ReservationForm({passId}){
 
     return(
         <form>
+            <h2>Create Reservation</h2>
             <label>Name: </label>
             <input
                 value={resFormObj.name} 

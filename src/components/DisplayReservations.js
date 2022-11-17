@@ -11,7 +11,7 @@ function DisplayReservations({currentPassAndRes}){
 
     return(
         <div>
-            <h2>Reservations:</h2>
+            <h2>Reservations for {currentPassAndRes.name}:</h2>
             <table>
                 <thead>
                     <tr>
