@@ -6,7 +6,6 @@ function ReservationForm({passId, passName, onResponse}){
     function updateResForm(key, value){
        const updatedResForm = {...resFormObj, [key]:value};
        setResFormObj(updatedResForm)
-       console.log(resFormObj)
     }
 
     function handleSubmit(e){

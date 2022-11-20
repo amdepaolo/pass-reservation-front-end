@@ -6,8 +6,8 @@ import DisplayReservations from './components/DisplayReservations';
 import CreatePassForm from './components/CreatePassForm';
 
 function App() {
-  const [passes, setPasses] = useState([])
-  const [currentPassAndRes, setCurrentPassAndRes] = useState({reservations:[]})
+  const [passes, setPasses] = useState([]);
+  const [currentPass, setCurrentPass] = useState({reservations:[]});
 
   useEffect(()=>{
     fetch('http://localhost:9292/passes')
@@ -18,7 +18,7 @@ function App() {
   function handlePassClick(id){
     fetch(`http://localhost:9292/passes/${id}`)
     .then(r => r.json())
-    .then(setCurrentPassAndRes)
+    .then(setCurrentPass)
   }
 
   function updatePasses(response){
@@ -27,16 +27,16 @@ function App() {
   }
 
   function updateReservations(response){
-    const updatedPassAndRes = {...currentPassAndRes, reservations: response}
-    setCurrentPassAndRes(updatedPassAndRes)
+    const updatedPass = {...currentPass, reservations: response}
+    setCurrentPass(updatedPass)
   }
   
   return (
     <div className="App">
       <Passes passes={passes} onPassClick={handlePassClick}/>
       <CreatePassForm onResponse={updatePasses}/>
-      <ReservationForm passId={currentPassAndRes.id} passName={currentPassAndRes.name} onResponse={updateReservations}/>
-      <DisplayReservations currentPassAndRes={currentPassAndRes} />
+      <ReservationForm passId={currentPass.id} passName={currentPass.name} onResponse={updateReservations}/>
+      <DisplayReservations currentPass={currentPass} />
     </div>
   );
 }

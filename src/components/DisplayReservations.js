@@ -1,8 +1,8 @@
 import React  from "react";
 import ReservationInfo from "./ReservationInfo";
 
-function DisplayReservations({currentPassAndRes}){
-    const reservations = currentPassAndRes.reservations;
+function DisplayReservations({currentPass}){
+    const reservations = currentPass.reservations;
     const reservationList = reservations.map(reservation =>{
         return (
             <ReservationInfo key={reservation.id} reservation={reservation}/>
@@ -11,7 +11,7 @@ function DisplayReservations({currentPassAndRes}){
 
     return(
         <div>
-            <h2>Reservations for {currentPassAndRes.name}:</h2>
+            <h2>Reservations for {currentPass.name}:</h2>
             <table>
                 <thead>
                     <tr>
@@ -19,6 +19,8 @@ function DisplayReservations({currentPassAndRes}){
                         <th>Email</th>
                         <th>Check-out Date</th>
                         <th>Check-in Date</th>
+                        <th>Cancel?</th>
+                        <th>Edit?</th>
                     </tr>
                 </thead>
                 <tbody>

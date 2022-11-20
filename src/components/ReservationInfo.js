@@ -1,6 +1,9 @@
-import React from "react";
+import React, {useState} from "react";
+import EditReservation from "./EditReservation";
 
-function ReservationInfo({reservation}){ 
+function ReservationInfo({reservation}){
+    const [edit, setEdit] = useState(false);
+
     function cleanUpDate(dateString){
         if (dateString === null) {return 'Error! No specified date!'}
         else return dateString.split('T')[0]
@@ -15,13 +18,20 @@ function ReservationInfo({reservation}){
         .then(r => console.log(r))
     }
 
-    return(
+    if (edit) {
+        return(
+            <EditReservation reservation={reservation} setEdit={setEdit} cleanUpDate={cleanUpDate} />
+        )
+    }
+
+    else return(
         <tr>
             <td>{reservation.name}</td>
             <td>{reservation.email}</td>
             <td>{cleanUpDate(reservation.check_out)}</td>
             <td>{cleanUpDate(reservation.check_in)}</td>
-            <td><button onClick={()=>cancelClick(reservation.id)}>cancel</button></td>
+            <td><button onClick={()=>cancelClick(reservation.id)}>Cancel Reservation?</button></td>
+            <td><button onClick={()=>setEdit(true)}>Edit Reservation?</button></td>
         </tr>
     )
 }

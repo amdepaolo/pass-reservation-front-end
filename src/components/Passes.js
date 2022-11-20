@@ -11,6 +11,7 @@ function Passes({passes, onPassClick}){
 
     return(
         <ul>
+            <h2>Museum Passes: </h2>
             {listOfPasses}
         </ul>
     )
