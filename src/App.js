@@ -22,21 +22,34 @@ function App() {
   }
 
   function updatePasses(response){
-    const updatedPasses = [...passes, response]
-    setPasses(updatedPasses)
-  }
+    const updatedPasses = [...passes, response];
+    setPasses(updatedPasses);
+  };
 
   function updateReservations(response){
-    const updatedPass = {...currentPass, reservations: response}
-    setCurrentPass(updatedPass)
-  }
+    const updatedPass = {...currentPass, reservations: response};
+    console.log(updatedPass);
+    setCurrentPass(updatedPass);
+    console.log(currentPass)
+  };
+
+  function updateResWithEdit(response){
+    const updatedResArr = currentPass.reservations.map(reservation =>{
+      if (reservation.id === response.id){
+        return response
+      }
+      else return reservation
+    });
+    const updatedPass = {...currentPass, reservations: updatedResArr};
+    setCurrentPass(updatedPass);
+  };
   
   return (
     <div className="App">
       <Passes passes={passes} onPassClick={handlePassClick}/>
       <CreatePassForm onResponse={updatePasses}/>
       <ReservationForm passId={currentPass.id} passName={currentPass.name} onResponse={updateReservations}/>
-      <DisplayReservations currentPass={currentPass} />
+      <DisplayReservations currentPass={currentPass} onResponse={updateResWithEdit}/>
     </div>
   );
 }

@@ -1,7 +1,7 @@
 import React, {useState} from "react";
 import EditReservation from "./EditReservation";
 
-function ReservationInfo({reservation}){
+function ReservationInfo({reservation, onResponse}){
     const [edit, setEdit] = useState(false);
 
     function cleanUpDate(dateString){
@@ -20,7 +20,7 @@ function ReservationInfo({reservation}){
 
     if (edit) {
         return(
-            <EditReservation reservation={reservation} setEdit={setEdit} cleanUpDate={cleanUpDate} />
+            <EditReservation reservation={reservation} setEdit={setEdit} cleanUpDate={cleanUpDate} onResponse={onResponse} />
         )
     }
 

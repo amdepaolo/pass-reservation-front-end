@@ -1,11 +1,11 @@
 import React  from "react";
 import ReservationInfo from "./ReservationInfo";
 
-function DisplayReservations({currentPass}){
+function DisplayReservations({currentPass, onResponse}){
     const reservations = currentPass.reservations;
     const reservationList = reservations.map(reservation =>{
         return (
-            <ReservationInfo key={reservation.id} reservation={reservation}/>
+            <ReservationInfo key={reservation.id} reservation={reservation} onResponse={onResponse}/>
         )
     })
 

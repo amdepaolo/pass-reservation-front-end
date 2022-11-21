@@ -1,6 +1,6 @@
 import React,{useState} from "react";
 
-function EditReservation({reservation, setEdit, cleanUpDate}){
+function EditReservation({reservation, setEdit, cleanUpDate, onResponse}){
     const [editResObj, setEditResObj] = useState(reservation)
 
     function updateEditResObj(key, value){  
@@ -16,6 +16,7 @@ function EditReservation({reservation, setEdit, cleanUpDate}){
             body: JSON.stringify(editResObj)
         })
         .then(r => r.json())
+        .then(onResponse)
         .then(()=>setEdit(false))
     }
 
