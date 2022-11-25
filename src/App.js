@@ -27,21 +27,24 @@ function App() {
   };
 
   function updateReservations(response){
-    const updatedPass = {...currentPass, reservations: response};
-    console.log(updatedPass);
-    setCurrentPass(updatedPass);
-    console.log(currentPass)
+    if (!response.error){
+      const updatedPass = {...currentPass, reservations: response};
+      console.log(updatedPass);
+      setCurrentPass(updatedPass)
+    } else {window.alert(response.error)}
   };
 
   function updateResWithEdit(response){
-    const updatedResArr = currentPass.reservations.map(reservation =>{
-      if (reservation.id === response.id){
-        return response
-      }
-      else return reservation
-    });
-    const updatedPass = {...currentPass, reservations: updatedResArr};
-    setCurrentPass(updatedPass);
+    if (!response.error){
+      const updatedResArr = currentPass.reservations.map(reservation =>{
+        if (reservation.id === response.id){
+          return response
+        }
+        else return reservation
+      });
+      const updatedPass = {...currentPass, reservations: updatedResArr};
+      setCurrentPass(updatedPass)
+    } else {window.alert(response.error)}
   };
   
   return (
