@@ -19,7 +19,7 @@ function CreatePassForm({onResponse}){
         .then(onResponse)     
     }
     return(
-        <form>
+        <form className="panel">
             <h2>Add Pass</h2>
             <label>Museum or Facility Name:</label>
             <input 

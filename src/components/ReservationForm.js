@@ -20,7 +20,7 @@ function ReservationForm({passId, passName, onResponse}){
     }
 
     return(
-        <form>
+        <form className='panel'>
             <h2>Create Reservation for {passName}</h2>
             <label>Name: </label>
             <input

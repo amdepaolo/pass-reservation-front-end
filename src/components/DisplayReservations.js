@@ -10,9 +10,9 @@ function DisplayReservations({currentPass, onResponse}){
     })
 
     return(
-        <div>
+        <div className="reservations">
             <h2>Reservations for {currentPass.name}:</h2>
-            <table>
+            <table className="reservations">
                 <thead>
                     <tr>
                         <th>Name</th>
