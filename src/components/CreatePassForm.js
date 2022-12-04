@@ -16,7 +16,8 @@ function CreatePassForm({onResponse}){
             body: JSON.stringify(passForm)
         })
         .then(r => r.json())
-        .then(onResponse)     
+        .then(onResponse)
+        .then(()=>setPassForm({name:'', website:''}))     
     }
     return(
         <form className="panel">

@@ -2,6 +2,7 @@ import React, {useState} from 'react'
 
 function ReservationForm({passId, passName, onResponse}){
     const [resFormObj, setResFormObj] = useState({name: '', email: '', check_out: ''})
+    const disableButton = passId === undefined? true: false
 
     function updateResForm(key, value){
        const updatedResForm = {...resFormObj, [key]:value};
@@ -16,7 +17,8 @@ function ReservationForm({passId, passName, onResponse}){
             body: JSON.stringify(resFormObj)
         })
         .then(r => r.json())
-        .then(onResponse)     
+        .then(onResponse) 
+        .then(()=>setResFormObj({name: '', email: '', check_out: ''}))    
     }
 
     return(
@@ -36,11 +38,11 @@ function ReservationForm({passId, passName, onResponse}){
             />
             <label>Choose Date: </label>
             <input 
-                value={resFormObj.checkOut}
+                value={resFormObj.check_out}
                 onChange={e => updateResForm('check_out', e.target.value)} 
                 type='date' 
             />
-            <button onClick={handleSubmit}>Submit</button>
+            <button onClick={handleSubmit} disabled={disableButton}>Submit</button>
         </form>
     )
 }

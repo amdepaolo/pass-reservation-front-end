@@ -6,7 +6,7 @@ function Passes({passes, onPassClick}){
             <tr key={pass.id}>
                 <td>{pass.name}</td>
                 <td>{pass.website}</td>
-                <td><button  onClick={() => onPassClick(pass.id)} >Select</button></td>
+                <td><button  onClick={() => onPassClick(pass.id)}>Select</button></td>
             </tr>
         )
     })
@@ -22,7 +22,9 @@ function Passes({passes, onPassClick}){
                         <td> </td>
                     </tr>
                 </thead>
-                {listOfPasses}
+                <tbody>
+                    {listOfPasses}    
+                </tbody>
             </table>
         </div>
         

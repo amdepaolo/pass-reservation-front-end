@@ -46,13 +46,20 @@ function App() {
       setCurrentPass(updatedPass)
     } else {window.alert(response.error)}
   };
+
+  function updateResWithDelete(response){
+    const updatedResArr = currentPass.reservations.filter(reservation => reservation.id !== response.id);
+    const updatedPass = {...currentPass, reservations: updatedResArr};
+    setCurrentPass(updatedPass)
+  }
   
   return (
     <div className="App">
+      <h1>Library Museum Pass Reservations</h1>
       <Passes passes={passes} onPassClick={handlePassClick}/>
       <CreatePassForm onResponse={updatePasses}/>
       <ReservationForm passId={currentPass.id} passName={currentPass.name} onResponse={updateReservations}/>
-      <DisplayReservations currentPass={currentPass} onResponse={updateResWithEdit}/>
+      <DisplayReservations currentPass={currentPass} onEdit={updateResWithEdit} onDelete={updateResWithDelete}/>
     </div>
   );
 }
