@@ -27,7 +27,7 @@ function CreatePassForm({onResponse}){
                 value={passForm.name}
                 onChange={e=>updatePassForm('name', e.target.value)} 
                 type='text'>
-            </input>
+            </input><br/>
             <label>Website:</label>
             <input 
                 value={passForm.website}

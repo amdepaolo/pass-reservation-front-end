@@ -29,13 +29,13 @@ function ReservationForm({passId, passName, onResponse}){
                 value={resFormObj.name} 
                 onChange={e => updateResForm('name', e.target.value)} 
                 type='text' 
-            />
+            /><br/>
             <label>Email: </label>
             <input 
                 value={resFormObj.email}
                 onChange={e => updateResForm('email', e.target.value)}
                 type='text'
-            />
+            /><br/>
             <label>Choose Date: </label>
             <input 
                 value={resFormObj.check_out}
